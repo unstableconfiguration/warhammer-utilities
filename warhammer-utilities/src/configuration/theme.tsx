@@ -8,16 +8,15 @@ const darkTheme = createTheme({
     },
 });
 
-interface Arguments {
-  children: React.ReactNode;
+interface Properties {
+    children: React.ReactNode;
 }
 
-export default function Theme(props: Arguments) { 
-    const { children } = props;
+export default function Theme(props: Properties) {
     return (
         <ThemeProvider theme={darkTheme}>
             <CssBaseline />
-            {children}
+            {props.children}
         </ThemeProvider>
     )
 }
