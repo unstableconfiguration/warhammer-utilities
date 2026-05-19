@@ -1,25 +1,32 @@
 
-import { createBrowserRouter, redirect } from "react-router";
-import { RouterProvider } from "react-router/dom";
+import { useState } from "react";
 import Header from "../components/header";
 
-// 
-const router = createBrowserRouter([
-    {
-        path: "/",
-        element: <div>Hello World</div>,
-    }
-]);
+import Dataslates from "../pages/home/dataslates";
+import DiceSimulations from "../pages/home/dice-simulations";
+import Notes from "../pages/home/notes";
 
-const onNavigate = function (page: string) {
-    redirect(page);
+function Switch(props: { value: string }) {
+    switch (props.value) {
+        case 'dataslates': return <Dataslates />;
+        case 'dice-simulations': return <DiceSimulations />;
+        case 'notes': return <Notes />;
+        default: return <Dataslates />;
+    }
 }
 
 export default function Router() {
+    const [route, setRoute] = useState('');
+
+    const onNavigate = function (page: string) {
+        history.pushState(null, '', page);
+        setRoute(page);
+    }
+
     return (
         <>
             <Header onNavigate={onNavigate} />
-            <RouterProvider router={router} />
+            <Switch value={route} />
         </>
     )
 }

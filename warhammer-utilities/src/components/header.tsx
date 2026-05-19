@@ -17,7 +17,7 @@ export default function Header(props: Properties) {
     return (
         <Tabs value={selected} onChange={onSelect}>
             <Tab label='Dataslates' value='dataslates' />
-            <Tab label='Dice' value='dice' />
+            <Tab label='Simulations' value='dice-simulations' />
             <Tab label='Notes' value='notes' />
         </Tabs>
     );
